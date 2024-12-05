@@ -1,0 +1,128 @@
+{%load static%}
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{% static 'paint2.css' %}">
+    <!-- FOR REGISTERAION FORM WE ARE GOING TO USE INTERNAL CSS AND INLINE CSS -->
+    <style>
+.text{
+    width: 65%;
+ padding: 5px;
+ border: 0px solid #000;
+ box-shadow: 2px 2px 2px 2px #000;
+ font-size: 14px;
+}
+body {
+                background:url('/static/back-ground-to-do.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+ background-color: #f0f0f0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ margin: 0;
+}
+    .login-container {
+ background: white;
+ border: 2px solid #000;
+ padding: 40px;
+ width: 360px;
+ box-shadow: 0px 8px 0 #000;
+ text-align: center;
+}
+#btn-submit{
+        margin-right: 30px;
+        margin-top: 20px;
+        padding: 7px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10%;
+      
+                   }
+
+#btn-reset{
+    margin-right: 30px;
+        margin-top: 20px;
+        padding: 7px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10%;
+}
+.bt-s:hover{
+background-color: blueviolet;
+color:white;
+}
+.bt-r:hover{
+    background-color: blueviolet;
+    color:white;
+}
+
+    </style>
+    
+</head>
+<body>
+<center>
+    <div class="login-container">
+   <form name="register" action="/insertuser/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <!--Thsi crsf token makes the data secure-->
+<p id="title">
+<h1>Task Management System</h1>    
+
+<h2>Register </h2>
+</p>
+
+   <h3> 
+    Name <input type="text"  name="tname" required class="text" placeholder="Name..">
+
+    <br><br>
+
+    Email <input type="text" name="temail" required="@gmail.com" class="text" placeholder="abc@gmail.com">
+
+    <br><br>
+
+    Phone <input type="phone" name="tphone" required class="text" placeholder="0123456789">
+
+
+    <br><br>
+
+    Designation <input type="checkbox" id="designation_M" name="tdesignation" value="MA">
+    <label for="designation_M">Manager</label>
+    <input type="checkbox" id="designation_E" name="tdesignation" value="EM">
+    <label for="designation_E">Employee</label>
+
+    <br><br>
+
+    Department <input type="text" name="tdepartment" required class="text" placeholder="eg.QA">
+
+    <br><br>
+
+    Office Id <input type="text" name="tid" required class="text" placeholder="1234">
+
+    <br><br>
+
+    Password <input type="text" name="tpass" required class="text">
+    <br><br>
+
+ <input class="bt-s" id="btn-submit" type="submit" value="Submit" name="Submit"></input>
+
+ <input class="bt-r" id="btn-reset" type="reset" value="Reset" width="30%" name="Reset">
+
+ <br><br>
+
+    Already Register? <a href="http://127.0.0.1:8000/login">Login!</a></h3>
+<h3>{{msg}}</h3>
+</form>
+    </div> 
+</center>
+</body>
+</html>

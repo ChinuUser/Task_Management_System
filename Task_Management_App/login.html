@@ -1,0 +1,100 @@
+{%load static%}
+<html>
+    <head>
+        <style>
+            body {
+                background:url('/static/back-ground-to-do.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+ background-color: #f0f0f0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ margin: 0;
+}
+
+.login-container {
+ background: white;
+ border: 2px solid #000;
+ padding: 40px;
+ width: 360px;
+ box-shadow: 0px 8px 0 #000;
+ text-align: center;
+}
+
+h1 {
+ font-size: 28px;
+ margin-bottom: 30px;
+}
+
+.input-group {
+ margin-bottom: 20px;
+ text-align: left;
+}
+
+label {
+ display: block;
+ margin-bottom: 8px;
+ font-size: 16px;
+}
+
+input {
+ width: 100%;
+ padding: 12px;
+ border: 0px solid #000;
+ box-shadow: 2px 2px 2px 2px #000;
+ font-size: 14px;
+}
+
+button {
+
+ border: 2px solid #000;
+ padding: 12px;
+ width: 100%;
+ cursor: pointer;
+ box-shadow: 3px 3px 0 #000;
+ font-size: 16px;
+ border-radius: 10%;
+}
+
+button:hover {
+ background-color: blueviolet;
+ color:white;
+}
+
+@media (max-width: 400px) {
+ .login-container {
+   width: 40%;
+   padding: 30px;
+ }
+}
+
+        </style>
+    </head>
+    <body>
+        
+        <div class="login-container">
+            <h1>Task Management System</h1>
+            <h1>Login</h1>
+            <h3>{{msg}}</h3>
+            <form id="loginForm"  action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="input-group">
+                <label for="username">Email</label>
+                <input type="text"  name="temail" required><br><br>
+                <label for="username">Office Id</label>
+                <input type="text"  name="tid" required>
+              </div>
+              <div class="input-group">
+                <label for="password">Password</label>
+                <input type="text" name="tpass" required>
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+    </body>
+
+</html>
